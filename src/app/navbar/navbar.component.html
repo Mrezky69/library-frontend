@@ -1,0 +1,15 @@
+<mat-toolbar class="navbar">
+  <span class="logo">Library</span>
+  <span class="spacer"></span>
+  <ul class="navbar-menu">
+    <li *ngFor="let item of menuItems">
+      <a mat-button [routerLink]="item.path">{{ item.label }}</a>
+    </li>
+  </ul>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+</mat-toolbar>

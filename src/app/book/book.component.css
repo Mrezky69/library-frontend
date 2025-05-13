@@ -1,0 +1,147 @@
+.borrow-background {
+    padding: 2rem;
+    min-height: 80vh;
+    background-color: #f4f7fa;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .custom-input {
+    width: 220px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .custom-input:focus {
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
+    outline: none;
+  }
+  
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+  }
+  
+  .loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3f51b5;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .pagination-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .entity-info {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .pagination-container button {
+    background-color: transparent;
+    color: #333;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .pagination-container button:hover:not(.active):not(:disabled) {
+    background-color: #e0e0e0;
+  }
+  
+  .pagination-container button.active {
+    background-color: #e0e0e0;
+    font-weight: bold;
+  }
+  
+  .pagination-container button:disabled {
+    color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  .year-picker-wrapper {
+    position: relative;
+    width: 220px;
+  }
+  
+  .year-display {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .year-picker {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+  
+  .year-option {
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .year-option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  table {
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  mat-icon-button {
+    margin-right: 8px;
+  }
+  

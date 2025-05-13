@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="borrow-background">
+  <form [formGroup]="form" class="filter-container">
+    <input class="custom-input" type="text" placeholder="Cari judul buku" formControlName="title">
+    <input class="custom-input" type="text" placeholder="Cari penulis" formControlName="author">
+    <div class="year-picker-wrapper">
+        <div class="custom-input year-display" (click)="toggleYearPicker()">
+          {{ form.value.publicationYear || 'Pilih Tahun' }}
+        </div>
+        <div class="year-picker" *ngIf="showYearPicker">
+          <div *ngFor="let year of years" (click)="selectYear(year)" class="year-option">
+            {{ year }}
+          </div>
+        </div>
+    </div>      
+  </form>
+
+  <div *ngIf="isLoading" class="spinner-container">
+    <div class="loader"></div>
+  </div>
+
+  <div class="book-list" *ngIf="!isLoading">
+    <mat-card class="book-card" *ngFor="let book of books">
+      <img [src]="getBookImage(book)" alt="Cover" class="book-cover">
+      <mat-card-title>{{ book.title }}</mat-card-title>
+      <p>Author: {{ book.author }}</p>
+      <p>Tahun: {{ book.publicationYear }}</p>
+      <p>Stok: {{ book.stock }}</p>
+      <mat-card-actions>
+        <button
+          mat-button
+          class="text-center"
+          color="primary"
+          [disabled]="getButtonStatus(book.id).disabled"
+          (click)="getButtonStatus(book.id).action === 'borrow' ? borrowBook(book.id) : returnBook(getRentId(book.id))">
+          {{ getButtonStatus(book.id).text }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="pagination-row" *ngIf="!isLoading && totalPages > 1">
+    <div class="entity-info">
+      Menampilkan {{ page * size + 1 }}–{{ page * size + books.length }} dari {{ totalElements }} buku
+    </div>
+    <div class="pagination-container">
+      <button (click)="goToPage(page - 1)" [disabled]="page === 0">‹</button>
+      <ng-container *ngFor="let p of paginationRange">
+        <button
+          [class.active]="p === page"
+          [disabled]="p === '...'">
+          {{ p === '...' ? '...' : (p + 1) }}
+        </button>
+      </ng-container>
+      <button (click)="goToPage(page + 1)" [disabled]="page >= totalPages - 1">›</button>
+    </div>
+  </div>
+</div>

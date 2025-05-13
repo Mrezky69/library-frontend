@@ -1,0 +1,12 @@
+.rent-history-container {
+  padding: 2rem;
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+button {
+  cursor: pointer;
+}

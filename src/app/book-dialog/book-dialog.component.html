@@ -1,0 +1,42 @@
+<div class="dialog-box">
+    <div class="dialog-header">
+      <h2>{{ data ? 'Edit Buku' : 'Tambah Buku' }}</h2>
+      <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+    </div>
+  
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
+      <div class="form-row">
+        <label>Judul*</label>
+        <input type="text" formControlName="title" required />
+      </div>
+  
+      <div class="form-row">
+        <label>Penulis*</label>
+        <input type="text" formControlName="author" required />
+      </div>
+  
+      <div class="form-row">
+        <label>Tahun Terbit*</label>
+        <input type="number" formControlName="publicationYear" required />
+      </div>
+  
+      <div class="form-row">
+        <label>Stok*</label>
+        <input type="number" formControlName="stock" required />
+      </div>
+  
+      <div class="image-upload">
+        <div class="image-preview" *ngIf="imagePreview">
+          <img [src]="imagePreview" alt="Preview" />
+        </div>
+  
+        <label class="upload-label">
+          ⬆ Pilih Gambar
+          <input type="file" accept="image/*" hidden (change)="onImageSelected($event)" />
+        </label>
+      </div>
+  
+      <button type="submit" class="save-btn" [disabled]="form.invalid">Simpan</button>
+    </form>
+  </div>
+  

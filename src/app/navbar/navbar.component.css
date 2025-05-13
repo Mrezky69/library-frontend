@@ -1,0 +1,31 @@
+.navbar {
+    background: linear-gradient(135deg, #38f2d6, #1f4f4f);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    padding: 0 1.5rem;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .spacer { 
+    flex: 1 1 auto; 
+  }
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navbar-menu li a:hover {
+  text-decoration: underline;
+}

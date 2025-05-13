@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="rent-history-container">
+  <h1>Riwayat Peminjaman</h1>
+  <table mat-table [dataSource]="rents" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="bookTitle">
+      <th mat-header-cell *matHeaderCellDef>Judul Buku</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.bookTitle }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="bookId">
+      <th mat-header-cell *matHeaderCellDef>ID Buku</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.bookId }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="memberId" *ngIf="isAdmin">
+      <th mat-header-cell *matHeaderCellDef>ID Member</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.memberId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="rentDate">
+      <th mat-header-cell *matHeaderCellDef>Tanggal Pinjam</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.rentDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef>Jatuh Tempo</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.dueDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="returnDate">
+      <th mat-header-cell *matHeaderCellDef>Tanggal Kembali</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.returnDate || '-' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let rent">{{ rent.status }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Aksi</th>
+      <td mat-cell *matCellDef="let rent">
+        <button mat-button color="primary" *ngIf="isAdmin && rent.status === 'WAITING'" (click)="approveRent(rent.id)">
+          Approve
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
